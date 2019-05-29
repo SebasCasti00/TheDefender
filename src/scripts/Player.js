@@ -59,7 +59,7 @@ class Player {
         
         if(pintarpuntaje){
             this.app.textSize(this.tabheight*0.1);
-            this.app.fill(100);
+            this.app.fill(0);
             this.textdir = 1;
 
             if(this.numero == 2){

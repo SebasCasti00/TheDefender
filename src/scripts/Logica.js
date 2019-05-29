@@ -16,10 +16,13 @@ class Logica{
         this.player2.keys("o","l");
         this.pelota = new Pelota(app,this.tablero.width, this.tablero.height);
         this.app.createCanvas(width, height);
-        console.log(this.tablero.width);
-        console.log(this.tablero.height);
+        //console.log(this.tablero.width);
+        //console.log(this.tablero.height);
+        
+        this.inicio = this.app.loadImage("./src/images/inicio.png");
+        this.botoninicio = this.app.loadImage("/src/images/botoninicio.png");
+        console.log(this.botoninicio);
 
-       
     }
 
     pintar(){
@@ -39,7 +42,7 @@ class Logica{
         if(this.key == this.player1.key_up){this.player1.up();}
         if(this.key == this.player1.key_down){this.player1.down();}
         if(this.key == this.player2.key_up){this.player2.up();}
-        if(this.key == this.player2.key_down){this.wplayer2.down();}
+        if(this.key == this.player2.key_down){this.player2.down();}
     }
 
     keyReleased(){
@@ -57,21 +60,23 @@ class Logica{
             this.player2.score = 0;
             this.pantalla = "juego";
         }else if(this.pantalla = "end"){
-            this.pantalla = this.intro;
+            this.pantalla = this.intro();
         }
     }
 
     intro(){
+        this.app.image(this.botoninicio, this.width/2, this.height/2, 125, 75);
         this.tablero.pintar(false);
+        this.app.image(this.inicio,0,0,this.width, this.height);
         this.player1.reset();
         this.player2.reset();
         this.player1.pintar(false);
         this.player2.pintar(false);
-
-        this.app.textSize(this.tablero.height * 0.1);
-        this.app.fill(100);
-        //this.app.textAlign(CENTER);
-        this.app.text("Click to start", this.tablero.width /2, this.tablero.height/2);
+        this.pelota.pintar();
+        //this.app.textSize(this.tablero.height * 0.1);
+        //this.app.fill(100);
+        //this.app.textAlign(this.CENTER);
+        //this.app.text("Click to start", this.tablero.width /2, this.tablero.height/2);
 
     //imagen jugar
     }

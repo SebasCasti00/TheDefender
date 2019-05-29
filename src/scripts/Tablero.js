@@ -13,7 +13,7 @@ class Tablero{
     }
 
     pintar(){
-        //this.app.background(0);
+        this.app.background(0);
         this.app.image(this.fondo, this.width, this.height);
 
         

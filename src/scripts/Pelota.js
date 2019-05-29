@@ -12,9 +12,9 @@ class Pelota{
         this.balon = this.app.loadImage("./src/images/balon.png");
 
 
-        console.log(this.tabwidth)
-        console.log(this.speed)
+        console.log(this.speed);
         console.log(this.pos);
+        console.log(this.tabwidth);
     }
 
     reset(){
@@ -24,7 +24,7 @@ class Pelota{
 
     pintar(){
         //imagen
-        this.app.image(this.balon, this.pos, this.pos,20,20);
+        this.app.image(this.balon, this.pos.x, this.pos.y, this.width+50, this.height+50);
 
        /* this.app.noStroke();
         this.app.fill(255,0,0);
