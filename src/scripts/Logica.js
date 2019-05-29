@@ -72,7 +72,7 @@ class Logica{
     intro(){
         this.app.tint(255,255);
         this.app.image(this.inicio,0,0,this.width, this.height);
-        this.app.image(this.botoninicio, this.width/4, this.height/4, this.width/2, this.height/2);
+        //this.app.image(this.botoninicio, this.width/4, this.height/4, this.width/2, this.height/2);
         this.player1.reset();
         this.player2.reset();
         this.pelota.reset();
