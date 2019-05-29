@@ -22,7 +22,7 @@ class Logica{
         this.fondo = this.app.loadImage("./src/images/fondo.png");
         this.app.soundFormats('wav');
         this.whistles = this.app.loadSound("./src/sound/whistles.wav");
-        //this.crowd = this.app.loadSound('./src/sound/crowd.wav');
+        this.crowd = this.app.loadSound('./src/sound/crowd.wav');
         
     }
 
@@ -79,7 +79,7 @@ class Logica{
     }
     
     juego(){
-        //this.crowd.play();
+        this.crowd.play();
         this.player1.update();
         this.player2.update();
         this.pelota.update();
