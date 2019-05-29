@@ -2,8 +2,10 @@ class Player {
     constructor(app, numero, tabwidth, tabheight){
         this.app = app;
         this.numero = numero;
-        this.width = tabwidth * 0.02;
+        this.width = tabwidth * 0.05;
         this.height = tabheight * 0.2;
+        this.tabwidth = tabwidth;
+        this.tabheight = tabheight;
 
         this.pos = this.app.createVector(0,0);
         this.acc = this.app.createVector(0,0);
@@ -18,8 +20,13 @@ class Player {
         this.playerwidth = this.width * 0.05;
 
         this.score = 0;
-        
+
+        this.fondo_player = this.app.loadImage("./src/images/player1.png");
+        if(numero == 2){
+            this.fondo_player = this.app.loadImage("./src/images/player2.png");
+        }
     }
+
     //resetear pos jugador
     reset(){
         if(this.numero == 1){
@@ -52,21 +59,16 @@ class Player {
         }
     }
 
-    pintar(pintarpuntaje){
-        this.app.noStroke();
-		this.app.fill(255);
-        this.app.rect(this.pos.x, this.pos.y, this.width, this.height);
-        
+    pintar(pintarpuntaje){        
+        this.app.image(this.fondo_player, this.pos.x, this.pos.y, this.width, this.height);
         if(pintarpuntaje){
             this.app.textSize(this.tabheight*0.1);
             this.app.fill(0);
-            this.textdir = 1;
-
+            var textdir = 1;
             if(this.numero == 2){
-                this.textdir = -1;
+                textdir = -1;
             }
-            
-            this.app.text(this.score, this.posx + this.textdir * this.width * 10, this.tabheight * 0,2);
+            this.app.text(this.score, this.pos.x + textdir * this.width * 10, this.tabheight * 0.2);
         }
     }
 

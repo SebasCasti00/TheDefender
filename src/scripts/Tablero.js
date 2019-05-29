@@ -1,22 +1,16 @@
 class Tablero{
-    constructor(app, width,height){
+    constructor(app, width, height){
         this.app = app;
         this.width = width;
         this.height = height;
-
-        this.lineah = this.width * 0.05;
-        this.lineaw = this.height * 0.02;
         this.fondo = this.app.loadImage("./src/images/fondo.png");
-        console.log(this.fondo)
-        console.log(this.height)
-        console.log(this.width);
     }
 
-    pintar(){
-        this.app.background(0);
-        this.app.image(this.fondo, this.width, this.height);
-
-        
-        
+    pintar(transparente){
+        this.app.background(255);
+        if(transparente){
+            this.app.tint(255, 80);
+        }
+        this.app.image(this.fondo, 0, 0, this.width, this.height);        
     }
 }

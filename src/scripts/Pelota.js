@@ -1,9 +1,10 @@
 class Pelota{
-    constructor(app,tabwidth, tabheight){
+    constructor(app, tabwidth, tabheight){
         this.app = app;
-        this.height = tabheight * 0.03;
+        this.height = tabheight * 0.1;
         this.width = this.height;
- 
+        this.tabwidth = tabwidth;
+        this.tabheight = tabheight;
 
         this.pos = this.app.createVector(0,0);
         this.speed = this.tabheight / 80;
@@ -11,10 +12,8 @@ class Pelota{
         this.salir  = false;
         this.balon = this.app.loadImage("./src/images/balon.png");
 
-
-        console.log(this.speed);
-        console.log(this.pos);
-        console.log(this.tabwidth);
+        
+        this.kick = this.app.loadSound('./src/sound/kick.wav');
     }
 
     reset(){
@@ -24,11 +23,7 @@ class Pelota{
 
     pintar(){
         //imagen
-        this.app.image(this.balon, this.pos.x, this.pos.y, this.width+50, this.height+50);
-
-       /* this.app.noStroke();
-        this.app.fill(255,0,0);
-        this.app.rect(this.pos.x,this.pos.y,this.width,this.height);*/
+        this.app.image(this.balon, this.pos.x, this.pos.y, this.width, this.height);
     }
 
     update(){
@@ -38,7 +33,7 @@ class Pelota{
             if(this.acc.x > 0){
                 this.acc = this.app.createVector(this.speed,-this.speed);
             } else {
-                this.acc = this.app.createVector(-this.speed,this.speed);
+                this.acc = this.app.createVector(-this.speed,-this.speed);
             }
         }
 
@@ -58,6 +53,7 @@ class Pelota{
         }
     }
 
+
     colisionando(player){
         var bx = this.pos.x;
 		var by = this.pos.y;
@@ -71,10 +67,9 @@ class Pelota{
 			bx + bw > px &&
 			by < py + ph &&
 			by + bh > py){
+                this.kick.play();
 			return true;
 		}
 		return false;
     }
-
-    //this.reset();
 }
