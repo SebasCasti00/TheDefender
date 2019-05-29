@@ -7,7 +7,7 @@ class Pelota{
         this.tabheight = tabheight;
 
         this.pos = this.app.createVector(0,0);
-        this.speed = this.tabheight / 80;
+        this.speed = (this.tabheight / 80) + 40;
         this.acc = this.app.createVector(0,0);
         this.salir  = false;
         this.balon = this.app.loadImage("./src/images/balon.png");
