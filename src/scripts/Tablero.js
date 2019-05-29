@@ -1,25 +1,22 @@
 class Tablero{
-    constructor(app, width,heigth){
+    constructor(app, width,height){
         this.app = app;
         this.width = width;
-        this.heigth = heigth;
+        this.height = height;
 
         this.lineah = this.width * 0.05;
-        this.lineaw = this.heigth * 0.02;
+        this.lineaw = this.height * 0.02;
+        this.fondo = this.app.loadImage("./src/images/fondo.png");
+        console.log(this.fondo)
+        console.log(this.height)
+        console.log(this.width);
     }
 
-    pintar(linea){
-        this.app.background(0);
+    pintar(){
+        //this.app.background(0);
+        this.app.image(this.fondo, this.width, this.height);
 
-        if(linea){
-            this.app.noStroke();
-            this.app.fill(100);
-            this.app.rect(
-                this.width/2-lineah/2,
-                this.lineah,
-                this.lineaw,
-                this.heigth-this.lineah*2
-            );
-        }
+        
+        
     }
 }

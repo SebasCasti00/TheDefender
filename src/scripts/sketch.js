@@ -10,15 +10,15 @@ new p5(function(app){
     }
 
     app.mouseClicked = function(){
-        logica.click();
+        logica.mouseClicked();
     }
     
     app.keyPressed= function(){
-        logica.eliminar();
+        logica.keyPressed();
     }
 
     app.keyReleased = function(){
-        logica.soltar();
+        logica.keyReleased();
     }
 
 });

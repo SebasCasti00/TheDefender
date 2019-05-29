@@ -18,13 +18,14 @@ class Player {
         this.playerwidth = this.width * 0.05;
 
         this.score = 0;
+        
     }
     //resetear pos jugador
     reset(){
         if(this.numero == 1){
-            this.pos = app.createVector(this.width*2, tabwidth/2 - this.height/2);
+            this.pos = this.app.createVector(this.width*2, this.tabheight/2 - this.height/2);
         }else {
-            this.pos = app.createVector(tabwidth - this.width*3, tabheight/2 - this.height/2);
+            this.pos = this.app.createVector(this.tabwidth - this.width*3, this.tabheight/2 - this.height/2);
         }
     }
 
@@ -54,24 +55,24 @@ class Player {
     pintar(pintarpuntaje){
         this.app.noStroke();
 		this.app.fill(255);
-        this.app.rect(this.posx, this.posy, this.width, this.height);
+        this.app.rect(this.pos.x, this.pos.y, this.width, this.height);
         
         if(pintarpuntaje){
-            this.app.textSize(tabheight*0.1);
+            this.app.textSize(this.tabheight*0.1);
             this.app.fill(100);
-            textdir = 1;
+            this.textdir = 1;
 
-            if(numero == 2){
-                textdir = -1;
+            if(this.numero == 2){
+                this.textdir = -1;
             }
             
-            this.app.text(this.score, this.posx + textdir * this.width * 10, tabheight * 0,2);
+            this.app.text(this.score, this.posx + this.textdir * this.width * 10, this.tabheight * 0,2);
         }
     }
 
     update(){
         this.pos.add(this.acc);
-        this.pos.y = this.app.constrain(this.pos.y, 0, tabheight - this.height);
+        this.pos.y = this.app.constrain(this.pos.y, 0, this.tabheight - this.height);
     }
 
     //this.reset();

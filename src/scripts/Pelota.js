@@ -3,29 +3,38 @@ class Pelota{
         this.app = app;
         this.height = tabheight * 0.03;
         this.width = this.height;
+ 
 
         this.pos = this.app.createVector(0,0);
-        this.speed = tabheight / 80;
+        this.speed = this.tabheight / 80;
         this.acc = this.app.createVector(0,0);
         this.salir  = false;
+        this.balon = this.app.loadImage("./src/images/balon.png");
+
+
+        console.log(this.tabwidth)
+        console.log(this.speed)
+        console.log(this.pos);
     }
 
     reset(){
-        this.pos = this.app.createVector(tabwidth*0.02 + this.width* 2, tabheight/2 - this.height/2);
+        this.pos = this.app.createVector(this.tabwidth*0.02 + this.width* 2, this.tabheight/2 - this.height/2);
         this.acc = this.app.createVector(this.speed, this.speed);
     }
 
     pintar(){
         //imagen
-        this.app.noStroke();
+        this.app.image(this.balon, this.pos, this.pos,20,20);
+
+       /* this.app.noStroke();
         this.app.fill(255,0,0);
-        this.app.rect(this.pos.x,this.pos.y,this.width,this.height);
+        this.app.rect(this.pos.x,this.pos.y,this.width,this.height);*/
     }
 
     update(){
         this.pos.add(this.acc);
         
-        if(this.pos.y > tabheight){
+        if(this.pos.y > this.tabheight){
             if(this.acc.x > 0){
                 this.acc = this.app.createVector(this.speed,-this.speed);
             } else {
